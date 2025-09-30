@@ -31,16 +31,13 @@ git init
 
 ```
 dvc init
-git add .dvc
-git commit -m "Initialize DVC"
 ```
 
 - Add GCS as the DVC remote (using your bucket path; adjust if needed):
 
 ```
 dvc remote add -d myremote {bucket uri}
-git add .dvc/config
-git commit -m "Add GCS remote"
+git add .dvc
 ```
 
 
@@ -68,6 +65,7 @@ import joblib
 
 def train_model(data_path, model_path):
     df = pd.read_csv(data_path)
+    print(f"Shape of the dataframe: {df.shape}")
     X = df.drop('species', axis=1)  # Assuming 'species' is the target column
     y = df['species']
     
@@ -106,7 +104,7 @@ Version the raw data and initial model with DVC, then push.
 ```
 dvc add data/raw_iris.csv models/model_v1.pkl
 git add data/raw_iris.csv.dvc models/model_v1.pkl.dvc .gitignore
-git commit -m "Track raw data and initial model with DVC"
+git commit -m "initial model and data with DVC - version 1"
 ```
 
 - Push data/model to GCS:
@@ -115,14 +113,7 @@ git commit -m "Track raw data and initial model with DVC"
 dvc push
 ```
 
-- Set up GitHub remote (create a repo on GitHub first, then):
 
-```
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
-
-This pushes code and DVC metadata to GitHub, while large files go to GCS.
 
 
 #### 4. Augment the Dataset
@@ -177,7 +168,6 @@ git commit -m "Track augmented data and retrained model with DVC"
 
 ```
 dvc push
-git push origin main
 ```
 
 
@@ -220,10 +210,4 @@ dvc checkout
 Now you have augmented_iris.csv and model_v2.pkl.
 
 This demonstrates traversing versions effortlessly. If you pull in a new environment (`git clone` + `dvc pull`), it fetches from GitHub/GCS automatically. Everything is tracked—repeat for more versions as needed.
-
-<div align="center">⁂</div>
-
-[^1]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/d78b29147fd46ab3e3b84395bd515c55/ff0c6101-afb8-4b02-804e-1ae2d3a7435e/2be78259.py
-
-[^2]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/d78b29147fd46ab3e3b84395bd515c55/ff0c6101-afb8-4b02-804e-1ae2d3a7435e/b2714d52.py
 
