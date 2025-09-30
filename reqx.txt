@@ -1,0 +1,4 @@
+pandas>=1.2.0
+scikit-learn>=0.24.1
+joblib>=1.2.0
+dvc[gs]>=3.0.0
