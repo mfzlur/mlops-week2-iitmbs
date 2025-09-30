@@ -1,8 +1,7 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
 
 ### Step-by-Step Guide to Version IRIS Data and Models with DVC and GCS
 
-I'll guide you through the entire process based on your instructions. We'll use DVC for data and model versioning, GCS as the remote storage for large files, and Git/GitHub for code and metadata. Assume you're working in a GCP environment like Cloud Shell or Vertex AI Workbench, with `gcloud` authenticated and DVC installed (`pip install 'dvc[gs]'`). If not, install DVC first.
+We'll use DVC for data and model versioning, GCS as the remote storage for large files, and Git/GitHub for code and metadata. Assume you're working in a GCP environment like Cloud Shell or Vertex AI Workbench, with `gcloud` authenticated and DVC installed (`pip install 'dvc[gs]'`). If not, install DVC first.
 
 We'll create two versions:
 
