@@ -6,6 +6,7 @@ import joblib
 
 def train_model(data_path, model_path):
     df = pd.read_csv(data_path)
+    print(f"Shape of the dataframe: {df.shape}")
     X = df.drop('species', axis=1)  
     y = df['species']
     
