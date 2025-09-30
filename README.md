@@ -17,8 +17,8 @@ Create a new project directory and set up Git/DVC.
 - Create and navigate to the project folder:
 
 ```
-mkdir iris-dvc-project
-cd iris-dvc-project
+mkdir week2
+cd week2
 ```
 
 - Initialize Git:
@@ -38,15 +38,9 @@ git commit -m "Initialize DVC"
 - Add GCS as the DVC remote (using your bucket path; adjust if needed):
 
 ```
-dvc remote add -d myremote gs://mlops-course-bucket-week2-rango-unique/dvc-storage/
+dvc remote add -d myremote {bucket uri}
 git add .dvc/config
 git commit -m "Add GCS remote"
-```
-
-- (Optional) Authenticate if not already:
-
-```
-gcloud auth application-default login
 ```
 
 
@@ -60,7 +54,7 @@ Fetch the raw IRIS data from GCS and train a classification model (using RandomF
 
 ```
 mkdir data
-gsutil cp gs://mlops-course-bucket-week2-rango-unique/data/data.csv data/raw_iris.csv
+gsutil cp {bucket_data_uri}
 ```
 
 - Create a training script (`train_model.py`) to load data, train, and save the model. Copy this code into a file:
