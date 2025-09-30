@@ -80,8 +80,8 @@ def train_model(data_path, model_path):
 
 if __name__ == '__main__':
     import sys
-    data_path = sys.argv[^1]
-    model_path = sys.argv[^2]
+    data_path = sys.argv[1]
+    model_path = sys.argv[2]
     train_model(data_path, model_path)
 ```
 
@@ -133,8 +133,8 @@ def augment_data(input_path, output_path):
 
 if __name__ == '__main__':
     import sys
-    input_path = sys.argv[^1]
-    output_path = sys.argv[^2]
+    input_path = sys.argv[1]
+    output_path = sys.argv[2]
     augment_data(input_path, output_path)
 ```
 
